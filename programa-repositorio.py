@@ -2,33 +2,39 @@ import tkinter as tk
 from tkinter import messagebox
 
 def guardar_datos():
-    nombre = entry_nombre.get()
-    nombre = entry_nombre.get()
-    date = entry_date.get()
+    nombreProducto = entry_nombreProducto.get()
+    codigoProducto = entry_codigoProducto.get()
+    fechaEntrega = entry_fechaEntrega.get()
     cantidad = entry_cantidad.get()
-    # Para guardar los datos 
-    messagebox.showinfo("Correcto", f"Guardado: {nombre} - {nombre} - {date} - {cantidad} en el inventario")
-
+    
+    #Obligatoriedad de datos en campos
+    if len(nombreProducto) == 0 or len(codigoProducto)==0 or len(fechaEntrega)==0 or len(cantidad)==0:
+         messagebox.showerror("Error", "Faltan Datos")
+               
+    else :
+         if len(nombreProducto) == 1 or len(codigoProducto)==1 or len(fechaEntrega)==1 or len(cantidad)==1:
+           messagebox.showinfo("Correcto", f"Guardado: {nombreProducto} - {fechaEntrega} - {codigoProducto} - {cantidad} en el inventario")
+    
 def limpiar_campos():
-    entry_nombre.delete(0, tk.END)
-    entry_nombre.delete(0, tk.END)
-    entry_date.delete(0, tk.END)
+    entry_nombreProducto.delete(0, tk.END)
+    entry_codigoProducto.delete(0, tk.END)
+    entry_fechaEntrega.delete(0, tk.END)
     entry_cantidad.delete(0, tk.END)
 
 root = tk.Tk()
 root.title("CG COMPUTADORAS")
 
-etiqueta_nombre = tk.Label(root, text="Nombre del producto:")
-etiqueta_nombre.pack()
+etiqueta_nombreProducto = tk.Label(root, text="Nombre del producto:")
+etiqueta_nombreProducto.pack()
 
-entry_nombre = tk.Entry(root)
-entry_nombre.pack()
+entry_nombreProducto = tk.Entry(root)
+entry_nombreProducto.pack()
 
-etiqueta_nombre = tk.Label(root, text="Código del producto:")
-etiqueta_nombre.pack()
+etiqueta_codigoProducto = tk.Label(root, text="Código del producto:")
+etiqueta_codigoProducto.pack()
 
-entry_nombre = tk.Entry(root)
-entry_nombre.pack()
+entry_codigoProducto = tk.Entry(root)
+entry_codigoProducto.pack()
 
 etiqueta_cantidad = tk.Label(root, text="Cantidad:")
 etiqueta_cantidad.pack()
@@ -36,11 +42,11 @@ etiqueta_cantidad.pack()
 entry_cantidad = tk.Entry(root)
 entry_cantidad.pack()
 
-etiqueta_date = tk.Label(root, text="Fecha:")
-etiqueta_date.pack()
+etiqueta_fechaEntrega = tk.Label(root, text="Fecha de Entrega:")
+etiqueta_fechaEntrega.pack()
 
-entry_date = tk.Entry(root)
-entry_date.pack()
+entry_fechaEntrega = tk.Entry(root)
+entry_fechaEntrega.pack()
 
 #Verificar el ingreso de datos
 
